@@ -1,0 +1,7 @@
+d <- read.csv("outputs/discovery_validation_main_module.csv", stringsAsFactors=FALSE)
+stopifnot(identical(d$role, c("discovery","directional_validation","directional_validation")))
+stopifnot(identical(d$n_case, c(119L,23L,8L)))
+stopifnot(identical(d$n_reference, c(50L,15L,6L)))
+stopifnot(all(d$median_delta > 0), all(d$bootstrap_ci_low > 0), all(d$bootstrap_ci_high > d$bootstrap_ci_low))
+stopifnot(all(d$rank_biserial > 0), all(d$wilcoxon_p < 0.05))
+cat("DISCOVERY_VALIDATION_ASSERTIONS_PASSED\n")

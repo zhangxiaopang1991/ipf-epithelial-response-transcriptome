@@ -1,0 +1,6 @@
+sc <- read.csv("outputs/mechanism_module_scores.csv",check.names=FALSE)
+mods <- c("fibrosis_epithelial_response","mucociliary_clearance")
+comparisons <- data.frame(dataset=c("GSE10667","GSE10667","GSE24206","GSE24206","GSE24206","GSE32537","GSE32537"),case=c("UIP","AEx","early_IPF","advanced_IPF","advanced_IPF","IPF_UIP","other"),control=c("control","UIP","control","control","early_IPF","control","control"),stringsAsFactors=FALSE)
+rows<-list();i<-0
+for(j in seq_len(nrow(comparisons)))for(m in mods){q<-comparisons[j,];d<-subset(sc,dataset==q$dataset & group %in% c(q$case,q$control));a<-d[[m]][d$group==q$case];b<-d[[m]][d$group==q$control];w<-wilcox.test(a,b,exact=FALSE);i<-i+1;rows[[i]]<-data.frame(dataset=q$dataset,module=m,case_group=q$case,reference_group=q$control,n_case=length(a),n_reference=length(b),median_case=median(a),median_reference=median(b),delta=median(a)-median(b),p=w$p.value)}
+r<-do.call(rbind,rows);r$fdr_within_contrast<-ave(r$p,interaction(r$dataset,r$case_group,r$reference_group),FUN=function(x)p.adjust(x,"BH"));write.csv(r,"outputs/stratified_case_definition_tests.csv",row.names=FALSE,fileEncoding="UTF-8");capture.output({cat("Stratified phenotype comparisons; exploratory.\n");print(r)},file="outputs/stratified_case_definition_report.txt")

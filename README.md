@@ -1,6 +1,6 @@
-# Public code package draft (v1)
+# Public code package (v1.0.0)
 
-This folder is a release candidate for a public repository accompanying the IPF lung-tissue transcriptome manuscript. It intentionally contains no GEO expression matrices, platform annotation archives, participant-level metadata, author information, or credentials.
+This folder contains the reproducible analysis code accompanying the IPF lung-tissue transcriptome manuscript. It intentionally contains no GEO expression matrices, platform annotation archives, participant-level metadata beyond public GEO sample labels, author information, or credentials.
 
 ## Intended repository contents
 
@@ -8,14 +8,18 @@ This folder is a release candidate for a public repository accompanying the IPF 
 - `run_order.md`: the documented execution order and expected outputs.
 - `software_versions.md`: R/Bioconductor package requirements.
 - `data_access.md`: public GEO accessions and download/checksum policy.
+- `data_provenance.md`: source URLs, access date, and SHA-256 checksums for the inputs used for the audited run.
 - `disclosure_boundary.md`: what is and is not released.
 
-## Before public release
+## Reproduction
 
-1. Copy this folder to a repository selected by the authors.
-2. Add a tested download script or precise manual download instructions for GSE10667, GSE24206, GSE32537 and GPL4133/GPL570/GPL6244.
-3. Add a clean `sessionInfo()` output generated from the release environment.
-4. Run the complete order from a clean checkout and compare declared output assertions.
-5. Review whether GEO terms-of-use and the target journal require a persistent archive DOI.
+1. Download the public GEO series-matrix and GPL annotation files using the exact instructions in `data_access.md`.
+2. Place them in the exact `inputs/` paths described there. The directory is ignored by Git.
+3. Run the documented commands in `run_order.md` from the repository root.
+4. Compare generated outputs against the acceptance criteria in `reproduction_acceptance_criteria.md`.
 
-This draft is not itself a public repository and must not be cited as one until released.
+The reported analysis passed a clean-directory reproduction audit on 2026-08-28. Hallmark GSEA is optional and is not reported in the manuscript.
+
+## Release scope
+
+This repository is code and documentation only. It does not make inferences about reflux, laryngopharyngeal reflux, microaspiration, laryngoscopy, causality, prognosis, or prediction.
