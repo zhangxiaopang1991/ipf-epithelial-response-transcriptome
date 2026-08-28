@@ -1,0 +1,5 @@
+# Public release contains code and documentation only.
+inputs/
+outputs/
+*.Rhistory
+*.RData
