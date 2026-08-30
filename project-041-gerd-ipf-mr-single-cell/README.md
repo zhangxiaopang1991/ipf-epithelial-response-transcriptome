@@ -25,7 +25,7 @@ Run commands from this directory. Public input files and the project-local `.r_l
 6. `aggregate_target_genes_by_donor_celltype.R`, `complete_and_summarize_target_genes.R`
 7. `review_exploratory_celltype_signals.R`, `review_celltype_support.R`
 8. `run_expression_intensity_sensitivity.R`, `compute_cell_library_sizes.js`, `run_normalized_pseudobulk_sensitivity.R`
-9. `make_submission_figures.R` and `build_submission_tables.R` (the latter should be copied from the project package before rerunning table generation)
+9. `make_submission_figures.R` and `build_submission_tables.R`
 
 ## Before release maintenance
 
