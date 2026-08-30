@@ -1,6 +1,6 @@
 library(data.table)
 
-project <- "workspace-code-sop-project-agent-md/projects/project-041-ipf-gerd-mr-single-cell"
+project <- normalizePath(".")
 grid <- fread(file.path(project, "outputs", "GSE136831_target_genes_complete_donor_celltype_grid.tsv"))
 cand <- fread(file.path(project, "outputs", "GSE136831_exploratory_signal_candidates_supported.tsv"))
 
